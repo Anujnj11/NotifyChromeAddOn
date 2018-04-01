@@ -1,0 +1,24 @@
+{
+    "manifest_version": 2,
+  
+    "name": "Get Notify!!",
+    "description": "Get notify.",
+    "version": "1.0",
+  
+    "browser_action": {
+     "default_icon": "images/spider.png",
+     "default_popup": "popup.html"
+    },
+    "background": {
+        "scripts": ["background.js"]
+      },
+    "icons": {
+        "16": "images/spider.png",
+        "32": "images/spider.png",
+        "48": "images/spider.png",
+        "128": "images/spider.png"
+      },
+    "permissions": [
+     "activeTab","notifications","storage"
+     ]
+  }
