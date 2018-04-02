@@ -51,7 +51,7 @@ function GetAllData(event){
                     var parseData = JSON.parse(http.responseText);
                     if(parseData.success && parseData.Data.length>0){
                         var TableData = "<table border = '1'><tr><th>Date</th><th>Text Message</th><th>Call</th></tr>";
-                        for(let i=0;i<parseData.Data.length;i++){
+                        for(let i=parseData.Data.length;i--;){
                             TableData += "<tr><td>"+ parseData.Data[i].Date + "</td><td>" + parseData.Data[i].Message + "</td><td>" + parseData.Data[i].CallLog +"</td></tr>";   
                         }
                         TableData += "</table>";
