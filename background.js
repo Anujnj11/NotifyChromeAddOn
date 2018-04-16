@@ -6,12 +6,13 @@ if(23>Objdate.getHours()){
 
 function GetNotify()
 {
-var isUserValid = localStorage.getItem('UserDetails');    
-    if(isUserValid !=null && isUserValid!=undefined)
+    var isUserValid = localStorage.getItem('AESToken');     
+    if(isUserValid !=null && isUserValid!=undefined && isUserValid !="")
     {
-        try{
-            var ParseData = JSON.parse(atob(localStorage.getItem('UserDetails')))
-            getAJAXCall(ParseData.UserName,ParseData.Mac);
+        try
+        {
+            getAJAXCall(isUserValid);            
+            // getAJAXCall(btoa(ParseData.UserName).toUpperCase(),ParseData.Mac);
         }
         catch(error){
 
@@ -48,11 +49,11 @@ chrome.notifications.create("notfyId",notification);
     
  }
 
- function getAJAXCall(UserName,MacId){
+ function getAJAXCall(AESToken){
         var http = new XMLHttpRequest();
         // var url = "http://localhost:9899/api/getLogDetails";
-        var url = "https://notifyapi.herokuapp.com/api/getLogDetails";
-        var params = "Username="+ UserName + "&MacId=" + MacId;
+        var url = "https://notifyapi.herokuapp.com/api/getAESLogDetails";
+        var params = "AESToken="+ AESToken;
         http.open("POST", url, true);
         //Send the proper header information along with the request
         http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");

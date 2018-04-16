@@ -5,21 +5,22 @@
     <script src="jquery.min.js"></script>
     <script src="popup.js"></script>
   </head>
-  <body>
+  <body >
     <div id="UserForm" style="display: none">
     <h1>Enter Phone Details</h1>
-    Enter UserName: <input required type="password" id="Username"> <br/>
+    Enter UserName: <input required type="text" id="Username"> <br/>
 
-    Enter Mac:<input type="password" required id="Mac"> <br /><br />
+    Enter OTP:<input type="text" required id="Mac"> <br /><br />
     <button id="Savedetails">Save Details</button>
     </div>  
-    <div id="PresentData">
+    <span id="ErrorAes" style="display: none"></span>    
+    <div style="width: 443px;height: 100px;" id="PresentData">
         <span id="Logout" style="cursor: pointer;"><u>Logout</u></span>
         <p>
             "we will notify when your phone get notifications".
         </p>
         <div>
-            <span  style="cursor: pointer;"  id="getalldata"><u>Get all Data</u></span>
+            <span  style="cursor: pointer;"  id="getalldata"><u>Missed Notification click to getGet all Data</u></span>
         </div>
         
     </div>
