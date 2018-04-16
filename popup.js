@@ -108,7 +108,7 @@ function ValidateInput()
 function getAESToken(UserName,password,callBack){
     var http = new XMLHttpRequest();
     var url = "https://notifyapi.herokuapp.com/api/GetLoginToken";
-    var params = "Username="+ UserName + "&password=" + password;
+    var params = "Username="+ UserName.trim() + "&password=" + password.trim();
     http.open("POST", url, true);
     //Send the proper header information along with the request
     http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
