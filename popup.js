@@ -23,6 +23,27 @@ $().ready(function () {
         GetAllData(event);
     });
 
+    $('#SnoozeCHK').click(function(){
+        if ($('#SnoozeCHK').is(':checked')) 
+        {
+            $('#SnoozeSele').css('display','inline-block');
+        }
+        else{
+            $('#SnoozeSele').css('display','none');      
+            $('#SnoozeSele').val("0");      
+            $('#getalldata').html("<u>Missed Notification</u>");
+            localStorage.removeItem('SnoozeSele');
+            localStorage.removeItem('IsSnooze');
+            localStorage.removeItem('SnoozeValue');
+            
+        }
+    });
+
+    $('#SnoozeSele').change(function(){
+        Snooze();
+    });
+
+    IsSnooze();
 });
 
 
@@ -49,10 +70,10 @@ function GetAllData(event) {
                         }
                         TableData += "</table>";
                         var opened = window.open("");
-                        opened.document.write("<html><head><title>MyTitle</title></head><body>" + TableData + "</body></html>");
+                        opened.document.write("<html><head><title>Notification</title></head><body>" + TableData + "</body></html>");
                     } else {
                         var opened = window.open("");
-                        opened.document.write("<html><head><title>MyTitle</title></head><body><b>We didn't find any more information about this User</b>.</body></html>");
+                        opened.document.write("<html><head><title>Notification</title></head><body><b>We didn't find any more information about this User</b>.</body></html>");
                     }
                 }
             }
@@ -83,6 +104,7 @@ function ValidateInput() {
             if (IsValid) {
                 $('#UserForm').css('display', 'none');
                 $('#PresentData').css('display', 'block');
+                $('#ErrorAes').css('display','none');
                 return true;
             } else {
                 $('#ErrorAes').css('display', 'block').html('Invalid Credentials');
@@ -119,6 +141,35 @@ function getAESToken(UserName, password, callBack) {
         }
     }
     http.send(params);
+}
+
+function Snooze()
+{
+    if ($('#SnoozeCHK').is(':checked') && $('#SnoozeSele').val() != "0") 
+    {
+        localStorage.setItem('SnoozeValue',$('#SnoozeSele').val());
+        var Objdate = new Date();
+        Objdate =  Objdate.getHours() + parseInt($('#SnoozeSele').val());
+        localStorage.setItem('IsSnooze',Objdate);
+        $('#getalldata').html("<u>Don't worry still you can see missed notification</u>");
+    }
+    else{
+        localStorage.removeItem('IsSnooze');     
+    }
+
+}
+
+function IsSnooze()
+{
+    var SnoozeValue = localStorage.getItem('SnoozeValue');
+    if(SnoozeValue !=undefined && SnoozeValue!=null)
+    {
+        $('#SnoozeCHK').attr('checked',true);
+        $('#SnoozeSele').val(SnoozeValue); 
+        $('#SnoozeSele').css('display','inline-block');
+        $('#getalldata').html("<u>Don't worry still you can see missed notification</u>");
+        
+    }
 }
 
 function GetNotify() {

@@ -19,14 +19,14 @@ function GetNotify() {
         } else {
             // console.log('not present');
         }
-    }
-    else
-    {
+    } else {
         localStorage.clear();
     }
 }
 
 function CallAlter(MSG) {
+    
+    if(Objdate.getHours() >= parseInt(localStorage.getItem('IsSnooze') == null ? 0 :localStorage.getItem('IsSnooze'))){
     var notification = {
         type: "basic",
         title: "Call",
@@ -34,20 +34,21 @@ function CallAlter(MSG) {
         iconUrl: "images/phone-call.png"
     };
     chrome.notifications.create("notfyId", notification);
-
+    }
 }
 
 
-function MessageAlert(MSGtEXT) {
+function MessageAlert(MSGtEXT,From) {
+    if(Objdate.getHours() >= parseInt(localStorage.getItem('IsSnooze') == null ? 0 :localStorage.getItem('IsSnooze')))
+    {
     var notification = {
         type: "basic",
-        title: "Message",
+        title: From,
         message: MSGtEXT,
         iconUrl: "images/chat.png"
     };
     chrome.notifications.create("notfyId", notification);
-
-
+    }
 }
 
 function getAJAXCall(AESToken) {
@@ -68,7 +69,7 @@ function getAJAXCall(AESToken) {
                         if (parseData.Data.IsCall) {
                             CallAlter(parseData.Data.CallLog);
                         } else {
-                            MessageAlert(parseData.Data.Message);
+                            MessageAlert(parseData.Data.Message,parseData.Data.CallLog);
                         }
                     }
                 }

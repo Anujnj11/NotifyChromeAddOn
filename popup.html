@@ -64,21 +64,44 @@ Enter OTP:<input type="text" required id="Mac"> <br /><br />
 .btn {border-radius: 2px!important;box-shadow: 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12), 0 3px 1px -2px rgba(0,0,0,.2);background: #3ebf67;color: #fff;
 font-size: 14px;font-weight: 200;padding: 9px 0;display: inline-block;text-align: center;width: 100%;border: none;}
 .header {font-size: 18px;font-weight: 700;margin-top: 0;}
-input {height: 30px;padding-right: 5px;border: solid 1px #c5d1da;box-shadow: none;border-radius: 2px;width: 250px;margin-bottom: 15px;}
+.formData {height: 30px;padding-right: 5px;border: solid 1px #c5d1da;box-shadow: none;border-radius: 2px;width: 250px;margin-bottom: 15px;}
 #UserForm {padding: 10px;}
+/* #coffeee {text-align: right;}
+#text {display: none;margin-left:10px;}
+
+a:hover + #text {
+    display: block;
+} */
+
 </style>
 </head>
 <body >
 <div id="UserForm" style="display: none">
 <h1 class="header">Enter Phone Details</h1>
-Enter UserName: <input required type="text" id="Username"> <br/>
-Enter OTP:<input type="text" required id="Mac"> <br />
+Enter UserName: <input class = "formData" required type="text" id="Username"> <br/>
+Enter OTP:<input type="text" class = "formData" required id="Mac"> <br />
 <button id="Savedetails" class="btn">Save Details</button>
 </div> 
 <span id="ErrorAes" style="display: none"></span> 
 <div style="width: 443px;height: 100px;" id="PresentData">
         <span id="Logout" style="cursor: pointer;"><u>Logout</u></span>
+        
+        <!-- <div id="coffeee">
+            <img src="/images/coffee.gif"  height="30" width="30" alt="Buy me a coffee!"><br/>
+                <div id="text">Buy me a coffee!</div>
+        </div> -->
 <p>we will notify when your phone get notifications.</p>
 <div>
+    <div>
+        <label>Snooze!</label><input style="padding-left: 307px;" type="checkbox"  id="SnoozeCHK" name="myCheckbox">
+        <select id = "SnoozeSele" style="display: none;" name="Snooze">
+            <option value="0">-Choose Snooze duration-</option>
+            <option value="1">1 hr</option>
+            <option value="2">2 hrs</option>
+            <option value="3">3 hrs</option>
+            <option value="4">4 hrs</option>
+        </select>
+    </div>
 <span style="cursor: pointer;" id="getalldata"><u>Missed Notification</u></span>
 <span style="margin-left:20px;" id="Logout" style="cursor: pointer;"><u>
+        
