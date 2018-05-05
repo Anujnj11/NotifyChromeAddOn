@@ -6,7 +6,7 @@ if (23 > Objdate.getHours()) {
 
 function GetNotify() {
     var isUserAESTokenValid = localStorage.getItem('AESTokenValidity');
-    if (isUserAESTokenValid != undefined && isUserAESTokenValid == Objdate.toDateString()) {
+    if (isUserAESTokenValid != undefined && isUserAESTokenValid == new Date().toDateString()) {
         var isUserValid = localStorage.getItem('AESToken');
         if (isUserValid != null && isUserValid != undefined && isUserValid != "") {
             try {

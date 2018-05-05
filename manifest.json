@@ -1,22 +1,22 @@
 {
     "manifest_version": 2,
   
-    "name": "Get Notify!!",
+    "name": "Notify Me!",
     "description": "Get notify.",
-    "version": "1.0",
-  
+    "version": "1.01",
+	"short_name":"Notify Me",
     "browser_action": {
-     "default_icon": "images/spider.png",
+     "default_icon": "images/synchronization_64.png",
      "default_popup": "popup.html"
     },
     "background": {
         "scripts": ["background.js"]
       },
     "icons": {
-        "16": "images/spider.png",
-        "32": "images/spider.png",
-        "48": "images/spider.png",
-        "128": "images/spider.png"
+        "16": "images/synchronization_16.png",
+        "32": "images/synchronization_32.png",
+        "48": "images/synchronization_64.png",
+        "128": "images/synchronization_128.png"
       },
     "permissions": [
      "activeTab","notifications","storage"
