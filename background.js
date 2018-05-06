@@ -1,6 +1,6 @@
 'use strict';
-var Objdate = new Date();
-if (23 > Objdate.getHours()) {
+// var Objdate = new Date();
+if (23 > new Date().getHours()) {
     setInterval(GetNotify, 15000);
 }
 
@@ -26,7 +26,7 @@ function GetNotify() {
 
 function CallAlter(MSG) {
     
-    if(Objdate.getHours() >= parseInt(localStorage.getItem('IsSnooze') == null ? 0 :localStorage.getItem('IsSnooze'))){
+    if(new Date().getHours() >= parseInt(localStorage.getItem('IsSnooze') == null ? 0 :localStorage.getItem('IsSnooze'))){
     var notification = {
         type: "basic",
         title: "Call",
@@ -39,7 +39,7 @@ function CallAlter(MSG) {
 
 
 function MessageAlert(MSGtEXT,From) {
-    if(Objdate.getHours() >= parseInt(localStorage.getItem('IsSnooze') == null ? 0 :localStorage.getItem('IsSnooze')))
+    if(new Date().getHours() >= parseInt(localStorage.getItem('IsSnooze') == null ? 0 :localStorage.getItem('IsSnooze')))
     {
     var notification = {
         type: "basic",
