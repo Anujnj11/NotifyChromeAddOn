@@ -3,14 +3,14 @@
   
     "name": "Notify Me!",
     "description": "Get notify.",
-    "version": "1.01",
+    "version": "1.03",
 	"short_name":"Notify Me",
     "browser_action": {
      "default_icon": "images/synchronization_64.png",
      "default_popup": "popup.html"
     },
     "background": {
-        "scripts": ["background.js"]
+        "scripts": ["socket.io.js","background.js"]
       },
     "icons": {
         "16": "images/synchronization_16.png",
@@ -19,6 +19,6 @@
         "128": "images/synchronization_128.png"
       },
     "permissions": [
-     "activeTab","notifications","storage"
+        "activeTab","notifications","storage","tabs"
      ]
   }

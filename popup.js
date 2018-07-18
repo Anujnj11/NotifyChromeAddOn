@@ -23,6 +23,12 @@ $().ready(function () {
         GetAllData(event);
     });
 
+    $('#createMsg').click(function (event){
+        chrome.tabs.create({
+            url: chrome.extension.getURL('send-text.html')
+        });
+    });
+
     $('#SnoozeCHK').click(function(){
         if ($('#SnoozeCHK').is(':checked')) 
         {
@@ -53,7 +59,7 @@ function GetAllData(event) {
         //var ParseData = JSON.parse(atob(localStorage.getItem('UserDetails')))
         var http = new XMLHttpRequest();
         // var url = "http://localhost:9899/api/getallLogDetails";
-        var url = "https://notifyapi.herokuapp.com/api/getAESallLogDetails";
+        var url = "https://socketnotifymeapi.herokuapp.com/api/getAESallLogDetails";
         var params = "AESToken=" + isUserValid;
         http.open("POST", url, true);
         //Send the proper header information along with the request
@@ -117,7 +123,7 @@ function ValidateInput() {
 
 function getAESToken(UserName, password, callBack) {
     var http = new XMLHttpRequest();
-    var url = "https://notifyapi.herokuapp.com/api/GetLoginToken";
+    var url = "https://socketnotifymeapi.herokuapp.com/api/GetLoginToken";
     var params = "Username=" + UserName.trim() + "&password=" + password.trim();
     http.open("POST", url, true);
     //Send the proper header information along with the request
@@ -170,16 +176,4 @@ function IsSnooze()
         $('#getalldata').html("<u>Don't worry still you can see missed notification</u>");
         
     }
-}
-
-function GetNotify() {
-    console.log("Getting call");
-    var notification = {
-        type: "basic",
-        title: "Hello",
-        message: "Anuj",
-        iconUrl: "images/get_started16.png"
-    };
-    chrome.notifications.create("notfyId", notification);
-
 }
