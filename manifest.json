@@ -3,7 +3,7 @@
   
     "name": "Notify Me!",
     "description": "Get notify.",
-    "version": "1.03",
+    "version": "1.04",
 	"short_name":"Notify Me",
     "browser_action": {
      "default_icon": "images/synchronization_64.png",

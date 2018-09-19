@@ -53,39 +53,46 @@ $().ready(function () {
 });
 
 
+// function GetAllData(event) {
+//     var isUserValid = localStorage.getItem('AESToken');
+//     if (isUserValid != null && isUserValid != undefined) {
+//         //var ParseData = JSON.parse(atob(localStorage.getItem('UserDetails')))
+//         var http = new XMLHttpRequest();
+//         // var url = "http://localhost:9899/api/getallLogDetails";
+//         var url = "https://socketnotifymeapi.herokuapp.com/api/getAESallLogDetails";
+//         var params = "AESToken=" + isUserValid;
+//         http.open("POST", url, true);
+//         //Send the proper header information along with the request
+//         http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+//         http.onreadystatechange = function () { //Call a function when the state changes.
+//             if (http.readyState == 4 && http.status == 200) {
+//                 // console.log(http.responseText);
+//                 if (http.responseText != "" && http.responseText != null && http.responseText != undefined) {
+//                     var parseData = JSON.parse(http.responseText);
+//                     if (parseData.success && parseData.Data.length > 0) {
+//                         var TableData = "<table border = '1'><tr><th>Date</th><th>Text Message</th><th>Call</th></tr>";
+//                         for (let i = parseData.Data.length; i--;) {
+//                             TableData += "<tr><td>" + parseData.Data[i].Date + "</td><td>" + parseData.Data[i].Message + "</td><td>" + parseData.Data[i].CallLog + "</td></tr>";
+//                         }
+//                         TableData += "</table>";
+//                         var opened = window.open("");
+//                         opened.document.write("<html><head><title>Notification</title></head><body>" + TableData + "</body></html>");
+//                     } else {
+//                         var opened = window.open("");
+//                         opened.document.write("<html><head><title>Notification</title></head><body><b>We didn't find any more information about this User</b>.</body></html>");
+//                     }
+//                 }
+//             }
+//         }
+//         http.send(params);
+//     }
+// }
+
 function GetAllData(event) {
     var isUserValid = localStorage.getItem('AESToken');
-    if (isUserValid != null && isUserValid != undefined) {
-        //var ParseData = JSON.parse(atob(localStorage.getItem('UserDetails')))
-        var http = new XMLHttpRequest();
-        // var url = "http://localhost:9899/api/getallLogDetails";
-        var url = "https://socketnotifymeapi.herokuapp.com/api/getAESallLogDetails";
-        var params = "AESToken=" + isUserValid;
-        http.open("POST", url, true);
-        //Send the proper header information along with the request
-        http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-        http.onreadystatechange = function () { //Call a function when the state changes.
-            if (http.readyState == 4 && http.status == 200) {
-                // console.log(http.responseText);
-                if (http.responseText != "" && http.responseText != null && http.responseText != undefined) {
-                    var parseData = JSON.parse(http.responseText);
-                    if (parseData.success && parseData.Data.length > 0) {
-                        var TableData = "<table border = '1'><tr><th>Date</th><th>Text Message</th><th>Call</th></tr>";
-                        for (let i = parseData.Data.length; i--;) {
-                            TableData += "<tr><td>" + parseData.Data[i].Date + "</td><td>" + parseData.Data[i].Message + "</td><td>" + parseData.Data[i].CallLog + "</td></tr>";
-                        }
-                        TableData += "</table>";
-                        var opened = window.open("");
-                        opened.document.write("<html><head><title>Notification</title></head><body>" + TableData + "</body></html>");
-                    } else {
-                        var opened = window.open("");
-                        opened.document.write("<html><head><title>Notification</title></head><body><b>We didn't find any more information about this User</b>.</body></html>");
-                    }
-                }
-            }
+        if (isUserValid != null && isUserValid != undefined && isUserValid != "") {
+            window.open("https://socketnotifymeapi.herokuapp.com/getaeslog?aestoken=" + isUserValid);
         }
-        http.send(params);
-    }
 }
 
 
